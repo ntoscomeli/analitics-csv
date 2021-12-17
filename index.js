@@ -1,14 +1,16 @@
 import csv from 'csv-parser'
+import converter from 'json-2-csv'
 import fs from 'fs'
 
 import buildInfo from './utils/index'
 
 const DEFAULT = 'example'
 
-const doScript = () => {
+const doScript = async () => {
   console.log('----- STARTING -----')
   const csvFilename = process.argv.slice(2) || DEFAULT
-
+  
+  console.log(`FILE: ${csvFilename} CSV`)
   const results = []
 
   fs.createReadStream(`${csvFilename}.csv`)
@@ -20,8 +22,14 @@ const doScript = () => {
     ))
     .on('data', (data) => results.push(data))
     .on('end', () => {
-      // console.log(results)
-      buildInfo(results)
+      buildInfo(results).then((info) => {
+        converter.json2csv(info, (err, csv) => {
+          if (err) {
+            throw err
+          }
+          fs.writeFileSync('todos.csv', csv)
+        })
+      })
     })
 }
 
