@@ -1,0 +1,42 @@
+{
+  "name": "analitics",
+  "version": "1.0.0",
+  "description": "Script to read csv file",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist & rm -rf script",
+    "lint": "eslint",
+    "start": "babel-node index.js",
+    "build": "babel index.js -d dist",
+    "exe": "npm run clean && npm run build && nexe --build --input=dist/index.js --name=script"
+  },
+  "author": "ntosco",
+  "license": "ISC",
+  "dependencies": {
+    "@logistics/restclient": "5.2.5",
+    "csv-parser": "3.0.0",
+    "json-2-csv": "3.15.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/node": "^7.16.0",
+    "@babel/plugin-proposal-optional-chaining": "7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "babel-eslint": "10.1.0",
+    "babel-plugin-import": "1.13.3",
+    "babel-plugin-import-directory": "1.1.0",
+    "babel-preset-es2015": "6.24.1",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-config-standard": "16.0.3",
+    "eslint-plugin-import": "2.25.3",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "5.2.0",
+    "eslint-plugin-react": "7.27.1",
+    "nodemon": "^2.0.15",
+    "prettier": "2.5.1",
+    "webpack": "5.65.0",
+    "webpack-cli": "4.9.1"
+  }
+}
