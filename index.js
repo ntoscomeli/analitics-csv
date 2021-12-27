@@ -27,7 +27,7 @@ const doScript = async () => {
           if (err) {
             throw err
           }
-          fs.writeFileSync('todos.csv', csv)
+          fs.writeFileSync('result.csv', csv)
         })
       })
     })
